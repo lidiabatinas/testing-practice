@@ -1,8 +1,6 @@
 <nb-card class="cards-container">
   <nb-card size="large" class="table-card">
-    <nb-card-header>
-      Electricity Consumption
-    </nb-card-header>
+    <nb-card-header class="test"> Electricity Consumption </nb-card-header>
 
     <nb-tabset fullWidth>
       <nb-tab *ngFor="let year of listData" [tabTitle]="year.title" [active]="year.active">
@@ -13,7 +11,9 @@
               <nb-icon
                 [class.down]="month.down"
                 [class.up]="!month.down"
-                [icon]="month.down ? 'arrow-down' : 'arrow-up'" pack="eva">
+                [icon]="month.down ? 'arrow-down' : 'arrow-up'"
+                pack="eva"
+              >
               </nb-icon>
               {{ month.delta }}
             </span>
@@ -37,7 +37,7 @@
         <span>291 <span class="caption">USD</span></span>
       </span>
 
-      <nb-select [(selected)]="type" class="type-select">
+      <nb-select [(selected)]="type" class="type-select" id="electricity-date-selector">
         <nb-option *ngFor="let t of types" [value]="t">{{ t }}</nb-option>
       </nb-select>
     </nb-card-header>
