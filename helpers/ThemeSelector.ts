@@ -1,6 +1,5 @@
 import { expect, Locator, Page } from '@playwright/test';
-
-type ThemeOption = 'Light' | 'Dark' | 'Cosmic' | 'Corporate';
+import { ThemeOption } from '../models/theme';
 
 export class ThemeSelector {
   themeButton: Locator;
