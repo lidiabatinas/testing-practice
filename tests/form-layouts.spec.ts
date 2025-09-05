@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { InputUtils } from './PageObjects/InputUtils';
+import { InputHelpers } from '../helpers/InputHelpers';
 
 //navigate to Forms page
 test.beforeEach(async ({ page }) => {
@@ -19,7 +19,7 @@ test('verify element is present, visible, editable', async ({ page }) => {
 test.describe('Checks grid forms', () => {
   test('Validate email input', async ({ page }) => {
     // Instantiate the utils class
-    const pageUtils = new InputUtils();
+    const pageUtils = new InputHelpers();
     const emailInput = page.locator('#inputEmail1');
     const testEmail = 'testEmail@gmail.com';
 
@@ -30,7 +30,7 @@ test.describe('Checks grid forms', () => {
 
   test('Validate password input', async ({ page }) => {
     // Instantiate the utils class
-    const pageUtils = new InputUtils();
+    const pageUtils = new InputHelpers();
     const passwordInput = page.locator('#inputPassword2');
     const testPassword = 'test1234';
 
@@ -44,7 +44,7 @@ test.describe('Checks grid forms', () => {
 test.describe('Checks basic forms', () => {
   test('Validate email input', async ({ page }) => {
     // Instantiate the utils class
-    const pageUtils = new InputUtils();
+    const pageUtils = new InputHelpers();
     const emailInput = page.locator('#exampleInputEmail1');
     const testEmail = 'testEmail@gmail.com';
 
@@ -55,7 +55,7 @@ test.describe('Checks basic forms', () => {
 
   test('Validate password input', async ({ page }) => {
     // Instantiate the utils class
-    const pageUtils = new InputUtils();
+    const pageUtils = new InputHelpers();
     const passwordInput = page.locator('#exampleInputPassword1');
     const testPassword = 'test1234';
 
