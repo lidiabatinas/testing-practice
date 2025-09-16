@@ -1,6 +1,6 @@
 import { expect, Page } from '@playwright/test';
 
-export class DropdownUtils {
+export class DropdownHelpers {
   static async selectDropdownValue(page: Page, dropdownButtonSelector: string, dropdownItemSelector: string) {
     await page.locator(dropdownButtonSelector).click();
     await page.locator(dropdownItemSelector).click();
