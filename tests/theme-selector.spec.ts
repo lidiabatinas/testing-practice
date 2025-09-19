@@ -1,32 +1,34 @@
-// import test from '@playwright/test';
-// import { ThemeSelector } from './PageObjects/ThemeSelector';
-// import { DropdownUtils } from './PageObjects/DropdownUtils';
+import { test } from '@playwright/test';
+import { URLS } from '../constants/urls';
+import { ThemeSelector } from '../helpers/ThemeSelector';
 
-// test.beforeEach(async ({ page }) => {
-//   await page.goto('http://localhost:4200/');
-// });
+test.beforeEach(async ({ page }) => {
+  const baseUrls = URLS.localhost;
+  await page.goto(baseUrls);
+});
 
-// test.describe('Checks if theme can be changed', () => {
-//   test('Selected theme will be corporate', async ({ page }) => {
-//     const themeObject = new ThemeSelector(page);
-//     await themeObject.selectTheme('Corporate');
-//     await themeObject.assertSelectedTheme('Corporate');
-//   });
+test.describe('Checks if theme can be changed', () => {
+  test('Selected theme will be corporate', async ({ page }) => {
+    const themeObject = new ThemeSelector(page);
+    await themeObject.selectTheme('Corporate');
+    await themeObject.assertSelectedTheme('Corporate');
+  });
 
-//   test('Selected theme will be cosmic', async ({ page }) => {
-//     const themeObject = new ThemeSelector(page);
-//     await themeObject.selectTheme('Cosmic');
-//     await DropdownUtils.selectDropdownValue(page, '.header-container button', '#nb-option-8');
-//     await themeObject.assertSelectedTheme('Cosmic');
-//   });
+  test('Selected theme will be cosmic', async ({ page }) => {
+    const themeObject = new ThemeSelector(page);
+    await themeObject.selectTheme('Cosmic');
+    await themeObject.assertSelectedTheme('Cosmic');
+  });
 
-//   test('Selected theme will be dark', async ({ page }) => {
-//     const themeObject = new ThemeSelector(page);
-//     await themeObject.selectTheme('Dark');
-//   });
+  test('Selected theme will be dark', async ({ page }) => {
+    const themeObject = new ThemeSelector(page);
+    await themeObject.selectTheme('Dark');
+    await themeObject.assertSelectedTheme('Dark');
+  });
 
-//   test('Selected theme will be light', async ({ page }) => {
-//     const themeObject = new ThemeSelector(page);
-//     await themeObject.selectTheme('Light');
-//   });
-// });
+  test('Selected theme will be light', async ({ page }) => {
+    const themeObject = new ThemeSelector(page);
+    await themeObject.selectTheme('Light');
+    await themeObject.assertSelectedTheme('Light');
+  });
+});
