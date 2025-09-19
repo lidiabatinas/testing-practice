@@ -1,13 +1,13 @@
 import { expect, test } from '@playwright/test';
 import { InputHelpers } from '../helpers/InputHelpers';
-import { USING_THE_GRID_FORM } from '../constants/selectors';
-import { BASIC_FORM } from '../constants/selectors';
-import { URLS } from '../constants/urls';
-import { TEST_EMAIL, TEST_PASSWORD } from '../constants/data';
+import { gridForm } from '../constants/selectors';
+import { basicForm } from '../constants/selectors';
+import { urls } from '../constants/urls';
+import { email, password } from '../constants/data';
 
 //navigate to Forms page
 test.beforeEach(async ({ page }) => {
-  const baseUrls = URLS.localhost;
+  const baseUrls = urls.localhost;
   await page.goto(baseUrls);
   await page.getByText('Forms').click();
   await page.getByText('Form Layouts').click();
@@ -15,9 +15,9 @@ test.beforeEach(async ({ page }) => {
 //verify elements is present, visible, editable
 test('verify element is present, visible, editable', async ({ page }) => {
   //find locator by id
-  await page.locator(USING_THE_GRID_FORM.emailGridForm).click();
-  await expect(page.locator(USING_THE_GRID_FORM.emailGridForm)).toBeVisible();
-  await expect(page.locator(USING_THE_GRID_FORM.emailGridForm)).toBeEditable();
+  await page.locator(gridForm.emailGridForm).click();
+  await expect(page.locator(gridForm.emailGridForm)).toBeVisible();
+  await expect(page.locator(gridForm.emailGridForm)).toBeEditable();
 });
 
 // GRID FORMS TESTS
@@ -25,21 +25,21 @@ test.describe('Checks grid forms', () => {
   test('Validate email input', async ({ page }) => {
     // Instantiate the utils class
     const inputHelpers = new InputHelpers();
-    const emailInput = page.locator(USING_THE_GRID_FORM.emailGridForm);
+    const emailInput = page.locator(gridForm.emailGridForm);
 
-    await emailInput.fill(TEST_EMAIL);
+    await emailInput.fill(email);
     // call the method we defined on the utils class
-    await inputHelpers.assertInputValue(emailInput, TEST_EMAIL);
+    await inputHelpers.assertInputValue(emailInput, email);
   });
 
   test('Validate password input', async ({ page }) => {
     // Instantiate the utils class
     const inputHelpers = new InputHelpers();
-    const passwordInput = page.locator(USING_THE_GRID_FORM.passwordGridForm);
+    const passwordInput = page.locator(gridForm.passwordGridForm);
 
-    await passwordInput.fill(TEST_PASSWORD);
+    await passwordInput.fill(password);
     // call the method we defined on the utils class
-    await inputHelpers.assertInputValue(passwordInput, TEST_PASSWORD);
+    await inputHelpers.assertInputValue(passwordInput, password);
   });
 });
 
@@ -48,20 +48,20 @@ test.describe('Checks basic forms', () => {
   test('Validate email input', async ({ page }) => {
     // Instantiate the utils class
     const inputHelpers = new InputHelpers();
-    const emailInput = page.locator(BASIC_FORM.emailBasicForms);
+    const emailInput = page.locator(basicForm.emailBasicForms);
 
-    await emailInput.fill(TEST_EMAIL);
+    await emailInput.fill(email);
     // call the method we defined on the utils class
-    await inputHelpers.assertInputValue(emailInput, TEST_EMAIL);
+    await inputHelpers.assertInputValue(emailInput, email);
   });
 
   test('Validate password input', async ({ page }) => {
     // Instantiate the utils class
     const inputHelpers = new InputHelpers();
-    const passwordInput = page.locator(BASIC_FORM.passwordBasicForms);
+    const passwordInput = page.locator(basicForm.passwordBasicForms);
 
-    await passwordInput.fill(TEST_PASSWORD);
+    await passwordInput.fill(password);
     // call the method we defined on the utils class
-    await inputHelpers.assertInputValue(passwordInput, TEST_PASSWORD);
+    await inputHelpers.assertInputValue(passwordInput, password);
   });
 });

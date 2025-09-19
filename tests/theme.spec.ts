@@ -1,9 +1,9 @@
 import { test } from '@playwright/test';
-import { URLS } from '../constants/urls';
+import { urls } from '../constants/urls';
 import { ThemeSelector } from '../helpers/ThemeSelector';
 
 test.beforeEach(async ({ page }) => {
-  const baseUrls = URLS.localhost;
+  const baseUrls = urls.localhost;
   await page.goto(baseUrls);
 });
 
