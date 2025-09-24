@@ -1,8 +1,9 @@
 import { expect, Page, test } from '@playwright/test';
 import { DropdownHelpers } from '../helpers/DropdownHelpers';
 import { urls } from '../constants/urls';
-import { dasboard } from '../constants/selectors';
+import { dashboard } from '../constants/selectors';
 import { theme } from '../constants/selectors';
+import { dropdown } from '../constants/selectors';
 
 //navigate to Forms page
 test.beforeEach(async ({ page }) => {
@@ -10,45 +11,41 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe('Checks if graph date can be selected', () => {
-  const buttonSelector = dasboard.graphDateButton;
-
   test('select the week option from week/year/month dropdown from Dashboardpage', async ({ page }) => {
-    await DropdownHelpers.selectDropdownByName(page, buttonSelector, dasboard.weekOption);
-    await DropdownHelpers.assertSelectedValue(page, buttonSelector, 'week');
+    await DropdownHelpers.selectDropdownByName(page, dashboard.graphDateButton, dashboard.weekOption);
+    await DropdownHelpers.assertSelectedValue(page, dashboard.graphDateButton, 'week');
   });
 
   test('select the mounth option from week/year/month dropdown from Dashboardpage', async ({ page }) => {
-    await DropdownHelpers.selectDropdownByName(page, buttonSelector, dasboard.monthOption);
-    await DropdownHelpers.assertSelectedValue(page, buttonSelector, 'month');
+    await DropdownHelpers.selectDropdownByName(page, dashboard.graphDateButton, dashboard.monthOption);
+    await DropdownHelpers.assertSelectedValue(page, dashboard.graphDateButton, 'month');
   });
 
   test('select the year option from week/year/month dropdown from Dashboardpage', async ({ page }) => {
-    await DropdownHelpers.selectDropdownByName(page, buttonSelector, dasboard.yearOption);
-    await DropdownHelpers.assertSelectedValue(page, buttonSelector, 'year');
+    await DropdownHelpers.selectDropdownByName(page, dashboard.graphDateButton, dashboard.yearOption);
+    await DropdownHelpers.assertSelectedValue(page, dashboard.graphDateButton, 'year');
   });
 });
 
 test.describe('Checks if theme can be changed', () => {
-  const buttonSelector = theme.themeButton;
-
   test('Selected theme will be corporate', async ({ page }) => {
-    await DropdownHelpers.selectDropdownByName(page, buttonSelector, theme.corporateTheme);
-    await DropdownHelpers.assertSelectedValue(page, buttonSelector, 'Corporate');
+    await DropdownHelpers.selectDropdownByName(page, theme.themeButton, theme.corporateTheme);
+    await DropdownHelpers.assertSelectedValue(page, theme.themeButton, 'Corporate');
   });
 
   test('Selected theme will be cosmic', async ({ page }) => {
-    await DropdownHelpers.selectDropdownByName(page, buttonSelector, theme.cosmicTheme);
-    await DropdownHelpers.assertSelectedValue(page, buttonSelector, 'Cosmic');
+    await DropdownHelpers.selectDropdownByName(page, theme.themeButton, theme.cosmicTheme);
+    await DropdownHelpers.assertSelectedValue(page, theme.themeButton, 'Cosmic');
   });
 
   test('Selected theme will be dark', async ({ page }) => {
-    await DropdownHelpers.selectDropdownByName(page, buttonSelector, theme.darkTheme);
-    await DropdownHelpers.assertSelectedValue(page, buttonSelector, 'Dark');
+    await DropdownHelpers.selectDropdownByName(page, theme.themeButton, theme.darkTheme);
+    await DropdownHelpers.assertSelectedValue(page, theme.themeButton, 'Dark');
   });
 
   test('Selected theme will be light', async ({ page }) => {
-    await DropdownHelpers.selectDropdownByName(page, buttonSelector, theme.lightTheme);
-    await DropdownHelpers.assertSelectedValue(page, buttonSelector, 'Light');
+    await DropdownHelpers.selectDropdownByName(page, theme.themeButton, theme.lightTheme);
+    await DropdownHelpers.assertSelectedValue(page, theme.themeButton, 'Light');
   });
 
   // test('Select theme will be light', async ({ page }) => {
@@ -58,9 +55,9 @@ test.describe('Checks if theme can be changed', () => {
   // });
 
   test('Select theme will be dark', async ({ page }) => {
-    const dropDownMenu = page.locator('ngx-header .header-container:first-child button');
+    const dropDownMenu = page.locator(dropdown.dropdownMenuButton);
     await dropDownMenu.click();
-    DropdownHelpers.selectDropdownOptionByIndex(page, '.option-list', 1);
+    DropdownHelpers.selectDropdownOptionByIndex(page, dropdown.dropdownOptionList1, 1);
     await expect(dropDownMenu).toHaveText('Dark');
   });
 });
