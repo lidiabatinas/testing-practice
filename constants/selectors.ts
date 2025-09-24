@@ -34,11 +34,13 @@ export const dropdown = {
   dropdownOptionList1: '.option-list',
 };
 
+// Use + selector to select the next neighbour !!!
+// Use ~ selector to select all neighbours !!!
 export const loginForm = {
   emailLoginInput: '#input-email',
   emailInputError: '#input-email + .status-danger',
   passwordLoginInput: '#input-password',
   passwordInputError: '#input-password + .status-danger',
   logInButton: 'button',
-  rememberMeCheckbox: '[name="rememberMe"]',
+  rememberMeCheckbox: '[name="rememberMe"] .custom-checkbox',
 };

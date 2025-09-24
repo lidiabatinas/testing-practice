@@ -16,4 +16,8 @@ export class InputHelpers {
   static async blurInput(page: Page, locator: string) {
     await page.locator(locator).blur();
   }
+
+  static async checkRadioButton(page: Page, locator: string) {
+    await page.check(locator);
+  }
 }

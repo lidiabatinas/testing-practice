@@ -83,7 +83,13 @@ test.describe('Login form is submitted successfully', () => {
     await InputHelpers.assertInputValue(page, loginForm.passwordLoginInput, password);
 
     await page.locator(loginForm.logInButton).click();
-
     await page.waitForURL(urls.dashboardPage);
+  });
+
+  test('Validate radio button is checked', async ({ page }) => {
+    await InputHelpers.setInputValue(page, loginForm.emailLoginInput, email);
+    await InputHelpers.setInputValue(page, loginForm.passwordLoginInput, password);
+    await page.locator(loginForm.rememberMeCheckbox).click();
+    await expect(page.locator(loginForm.rememberMeCheckbox)).toContainClass('checked');
   });
 });
